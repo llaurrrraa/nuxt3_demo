@@ -13,6 +13,6 @@ export interface BusOnTimeData {
   y1Data: [];
 }
 
-export async function getBusOnTime(params: BusTimeType, option?:HttpOption<any>) {
+export async function getBusOnTime(params: BusTimeType) {
   return api.post<BusOnTimeData>('/frontstage/dashboard-data/bus_ontime', params)
 }
