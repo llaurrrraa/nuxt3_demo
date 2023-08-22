@@ -1,3 +1,4 @@
+import { HttpOption } from './useHttps';
 // https://github.com/unjs/ofetch/blob/main/src/fetch.ts
 import type { FetchResponse, SearchParameters } from 'ofetch';
 
@@ -64,6 +65,12 @@ export const api = {
   },
   post: <T>(url: UrlType, body?: any, option?: HttpOption<T>) => {
     return fetch<T>(url, { method: 'post', body, ...option })
+  },
+  put: <T>(url: UrlType, body?:any, option?: HttpOption<T>) => {
+    return fetch<T>(url, { method: 'put', body, ...option })
+  },
+  delete: <T>(url: UrlType, body?:any, option?: HttpOption<T>) => {
+    return fetch<T>(url, {method: 'delete', body, ...option})
   }
 }
 
