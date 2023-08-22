@@ -1,4 +1,3 @@
-import { HttpOption } from './useHttps';
 // https://github.com/unjs/ofetch/blob/main/src/fetch.ts
 import type { FetchResponse, SearchParameters } from 'ofetch';
 

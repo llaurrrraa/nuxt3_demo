@@ -1,5 +1,4 @@
 import type { HttpOption } from 'composables/useHttp'
-import { fetch } from  '~/composables/useHttp'
 
 export interface BusTimeType {
   year: string;
