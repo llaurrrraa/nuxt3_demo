@@ -5,10 +5,11 @@
 </template>
 <script lang="ts" setup>
 const { bus } = useApi();
-const { data: test } = await bus.getBusOnTime({
-  year: '112',
-  month: '4',
+const { data: test, error } = await bus.getAccident({
+  year: 2022,
+  district: '桃園區',
 });
+console.log(error);
 
 const busData = test.value?.payload;
 </script>

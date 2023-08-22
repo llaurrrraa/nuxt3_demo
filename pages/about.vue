@@ -6,6 +6,6 @@
 </script>
 
 <template>
-  <div>about parent</div>
+  <div>about Accident data</div>
   <NuxtPage></NuxtPage>
 </template>

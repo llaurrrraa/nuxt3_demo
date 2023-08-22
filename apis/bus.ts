@@ -1,18 +1,16 @@
-import type { HttpOption } from 'composables/useHttp'
 
-export interface BusTimeType {
-  year: string;
-  month: string;
+export interface AccidentsType {
+  year: number|string;
+  district: string;
 }
 
-export interface BusOnTimeData {
+export interface FetchAccidentsData {
+  data: [][];
   xLabels: [];
-  y2ItemLabels: [];
-  y1ItemLabels: [];
-  y2Data: [];
-  y1Data: [];
+  itemLabels: [];
+  total: [][];
 }
 
-export async function getBusOnTime(params: BusTimeType) {
-  return api.post<BusOnTimeData>('/frontstage/dashboard-data/bus_ontime', params)
+export async function getAccident(params: AccidentsType) {
+  return api.post<FetchAccidentsData>('frontstage/dashboard-data/accidents', params)
 }

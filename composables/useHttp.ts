@@ -34,6 +34,7 @@ function paramsSerializer(params?: SearchParameters) {
 // fetch
 function fetch<T>(url: UrlType, option: any) {
   return useFetch<ResOptions<T>>(url, {
+    
     // request interceptors
     onRequest({ options }) {
       options.params = paramsSerializer(options.params);
