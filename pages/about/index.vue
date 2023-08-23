@@ -10,7 +10,5 @@ const data = await bus.getAccident({
   year: 2022,
   district: '桃園區',
 });
-console.log('data', data);
-
-// const busData = test.value?.payload;
+console.log(data);
 </script>

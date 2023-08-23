@@ -33,29 +33,31 @@ function paramsSerializer(params?: SearchParameters) {
 
 // fetch
 async function fetch<T>(url: UrlType, option: any) {
-  const  { data } = await useFetch<ResOptions<T>>(url, {
+  
+    const  { data } = await useFetch<ResOptions<T>>(url, {
     
     // request interceptors
-    onRequest({ options }) {
-      options.params = paramsSerializer(options.params);
+    onRequest({ options }) {options.params = paramsSerializer(options.params);
       const { public: { apiUrl } } = useRuntimeConfig();
       options.baseURL = apiUrl;
-    },
-    // response interceptors
-    onResponse({ response }) {},
-    onResponseError({ response }) {
-      console.log('on response error');
-      return Promise.reject(response?._data ?? null)
-    },
-    onRequestError({ error } ) {
-      console.log('on request error:', error );
     },
     ...option,
   });
 
-  if(data.value?.success === false || data.value?.code !=200) {
-    console.error('error code:',data.value?.code);
-    console.error('error message:',data.value?.s_message);
+  if(!data.value?.success || data.value?.code !=200) {
+    switch (data.value?.code) {
+      case 401:
+        console.error('您的登入狀態已過期，請重新登入。');
+        break;
+      case 402:
+      case 404:
+      case 500:
+        console.error('error code:',data.value?.code);
+        console.error('error message:',data.value?.s_message);
+        break;
+      default:
+        break;
+    }
   }
   if(data.value?.success && data.value?.code === 200) {
     return data.value?.payload
