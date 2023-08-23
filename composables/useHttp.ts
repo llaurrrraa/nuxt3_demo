@@ -32,8 +32,8 @@ function paramsSerializer(params?: SearchParameters) {
 }
 
 // fetch
-async function fetch<T>(url: UrlType, option: any) {
-  
+export async function api<T>(url: UrlType, option: any) {
+
     const  { data } = await useFetch<ResOptions<T>>(url, {
     
     // request interceptors
@@ -63,19 +63,3 @@ async function fetch<T>(url: UrlType, option: any) {
     return data.value?.payload
   }
 };
-
-export const api = {
-  get: <T>(url: UrlType, params?: any, option?: HttpOption<T>) => {
-    return fetch<T>(url, { method: 'get', params, ...option})
-  },
-  post: async <T>(url: UrlType, body?: any, option?: HttpOption<T>) => {
-    return fetch<T>(url, { method: 'post', body, ...option })
-  },
-  put: <T>(url: UrlType, body?:any, option?: HttpOption<T>) => {
-    return fetch<T>(url, { method: 'put', body, ...option })
-  },
-  delete: <T>(url: UrlType, body?:any, option?: HttpOption<T>) => {
-    return fetch<T>(url, {method: 'delete', body, ...option})
-  }
-}
-

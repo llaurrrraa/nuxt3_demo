@@ -10,10 +10,16 @@ export interface FetchAccidentsData {
   total: [][];
 }
 
-export async function getAccident(params: AccidentsType) {
-  return api.post<FetchAccidentsData>('frontstage/dashboard-data/accidents', params)
+export const getAccident = async ( params: any ) => {
+  return await api('frontstage/dashboard-data/accidents', {
+    method: 'post',
+    body: params
+  })
 }
 
-export  const getBusOnTime = async (params: any) => {
-  return api.post<any>('frontstage/dashboard-data/{xxxxxxxx}_option', params)
+export const getBusOnTime = async ( params: any ) => {
+  return await api('frontstage/dashboard-data/{xxxxxxxx}_option', {
+    method: 'post',
+    body: params
+  })
 }
