@@ -32,8 +32,8 @@ function paramsSerializer(params?: SearchParameters) {
 }
 
 // fetch
-function fetch<T>(url: UrlType, option: any) {
-  return useFetch<ResOptions<T>>(url, {
+async function fetch<T>(url: UrlType, option: any) {
+  const  { data } = await useFetch<ResOptions<T>>(url, {
     
     // request interceptors
     onRequest({ options }) {
@@ -42,28 +42,31 @@ function fetch<T>(url: UrlType, option: any) {
       options.baseURL = apiUrl;
     },
     // response interceptors
-    onResponse({ response }) {
-      if( response.status === 200 ) {
-        return response._data
-      }
-      if(response._data.code !== 200) {
-        console.log('response error:', response);
-      }
-      return response._data
-    },
-    onRequestError({ response }) {
-      console.log('request error:', response);
+    onResponse({ response }) {},
+    onResponseError({ response }) {
+      console.log('on response error');
       return Promise.reject(response?._data ?? null)
     },
+    onRequestError({ error } ) {
+      console.log('on request error:', error );
+    },
     ...option,
-  })
-}
+  });
+
+  if(data.value?.success === false || data.value?.code !=200) {
+    console.error('error code:',data.value?.code);
+    console.error('error message:',data.value?.s_message);
+  }
+  if(data.value?.success && data.value?.code === 200) {
+    return data.value?.payload
+  }
+};
 
 export const api = {
   get: <T>(url: UrlType, params?: any, option?: HttpOption<T>) => {
     return fetch<T>(url, { method: 'get', params, ...option})
   },
-  post: <T>(url: UrlType, body?: any, option?: HttpOption<T>) => {
+  post: async <T>(url: UrlType, body?: any, option?: HttpOption<T>) => {
     return fetch<T>(url, { method: 'post', body, ...option })
   },
   put: <T>(url: UrlType, body?:any, option?: HttpOption<T>) => {

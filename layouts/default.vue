@@ -5,7 +5,7 @@
     <NuxtLoadingIndicator :color="'#4257f5'" :height="5" />
     <AboutHeader />
     <NuxtPage />
-    <AboutFooter />
+    <!-- <AboutFooter /> -->
   </div>
 </template>
 
