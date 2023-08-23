@@ -4,9 +4,8 @@
   </div>
 </template>
 <script lang="ts" setup>
-const { bus } = useApi();
-const busData = await bus.getBusOnTime();
-const data = await bus.getAccident({
+const busData = await getBusOnTime();
+const data = await getAccident({
   year: 2022,
   district: '桃園區',
 });

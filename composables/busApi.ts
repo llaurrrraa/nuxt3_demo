@@ -1,4 +1,3 @@
-
 export interface AccidentsType {
   year: number|string;
   district: string;
