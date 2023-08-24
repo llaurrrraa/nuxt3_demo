@@ -1,8 +1,12 @@
 // https://github.com/unjs/ofetch/blob/main/src/fetch.ts
-import type { FetchResponse, SearchParameters } from 'ofetch';
+
+// interface SearchParameters {
+//   [key: string]: any;
+// }
+import type { SearchParameters } from 'ofetch';
 
 // UseFetchOptions type 文件: https://nuxt.com/docs/api/composables/use-fetch
-import type { UseFetchOptions } from 'nuxt/app';
+// import type { UseFetchOptions } from 'nuxt/app';
 
 import type { Ref } from 'vue';
 
@@ -15,7 +19,6 @@ export interface ResOptions<T> {
 
 type UrlType = string | Request | Ref<string | Request > | (() => string | Request)
 
-export type HttpOption<T> = UseFetchOptions<ResOptions<T>>
 
 // array 參數序列化
 function paramsSerializer(params?: SearchParameters) {
@@ -34,10 +37,13 @@ function paramsSerializer(params?: SearchParameters) {
 // fetch
 export async function api<T>(url: UrlType, option: any) {
 
-    const  { data } = await useFetch<ResOptions<T>>(url, {
+    const { data } = await useFetch<ResOptions<T>>(url, {
     
     // request interceptors
-    onRequest({ options }) {options.params = paramsSerializer(options.params);
+    onRequest({ options }) {
+      options.params = paramsSerializer(options.params);
+      
+      // The useRuntimeConfig composable is used to expose config variables within your app.
       const { public: { apiUrl } } = useRuntimeConfig();
       options.baseURL = apiUrl;
     },
@@ -60,6 +66,6 @@ export async function api<T>(url: UrlType, option: any) {
     }
   }
   if(data.value?.success && data.value?.code === 200) {
-    return data.value?.payload
+    return JSON.parse(JSON.stringify(data.value?.payload))
   }
 };

@@ -1,8 +1,7 @@
 <template>
   <div class="index-container">
-    <h4>I am Parent's Index</h4>
-    <NuxtLink to="/parent/child1">child 1</NuxtLink>
-    <NuxtLink to="/parent/child2">child 2</NuxtLink>
+    <h4>This is Course {{ $route.params.classname }}</h4>
+    <NuxtLink to="/course">Back to course index</NuxtLink>
   </div>
 </template>
 
