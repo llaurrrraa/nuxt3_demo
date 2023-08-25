@@ -13,12 +13,10 @@ interface CardList {
 }
 
 const props = defineProps<{
-  courses: CardList[] | any;
+  courses: CardList[] | null;
 }>();
 
 const router = useRouter();
-
-const goToCourses = (id: number) => router.push(`/courses/${id}`);
 </script>
 
 <template>
@@ -26,8 +24,7 @@ const goToCourses = (id: number) => router.push(`/courses/${id}`);
     class="card"
     v-for="item in props.courses"
     :key="item.id"
-    @click="goToCourses(item.id)"
-    :to="`/courses/${item.id}`"
+    :to="`/course/${item.id}`"
   >
     <img :src="item.photo" alt="" />
     <div class="content">

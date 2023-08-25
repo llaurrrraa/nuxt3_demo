@@ -7,7 +7,6 @@ const store = useHomeStore();
 
 // plugin
 const { $hello } = useNuxtApp();
-const selectedDate = ref(new Date());
 </script>
 
 <template>

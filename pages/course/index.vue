@@ -1,6 +1,5 @@
 <template>
   <div class="index-container">
-    <h4>This is Course Index</h4>
     <NuxtLink to="/course/Nuxt2">Nuxt2</NuxtLink>
     <NuxtLink to="/course/Nuxt3">Nuxt3</NuxtLink>
     <NuxtLink to="/course/Vue3">Vue3</NuxtLink>
@@ -9,9 +8,23 @@
 </template>
 
 <script setup lang="ts">
-const { data } = await useFetch(
+interface CardList {
+  id: number;
+  name: string;
+  photo: string;
+  money: string;
+  teacher: {
+    name: string;
+    img: string;
+  };
+  student: number;
+  star: number;
+}
+const { data } = await useFetch<CardList[]>(
   'https://vue-lessons-api.vercel.app/courses/list'
 );
+// const route = useRoute();
+// console.log(route);
 </script>
 
 <style lang="scss" scope>
