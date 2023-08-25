@@ -22,7 +22,6 @@ export default defineNuxtConfig({
         'autoImports': ['defineStore', 'acceptHMRUpdate'],
       },
     ],
-    '@element-plus/nuxt',
     ['@nuxtjs/google-fonts', {
       families: {
         'Open Sans': [300, 500, 700]
