@@ -7,11 +7,18 @@ const store = useHomeStore();
 
 // plugin
 const { $hello } = useNuxtApp();
-const selectedDate = ref(new Date());
 </script>
 
 <template>
   <div class="main">
+    <NuxtLink to="https://www.google.com.tw" external>go to google</NuxtLink>
+    <p>|</p>
+    <NuxtLink to="/parent">go to parent</NuxtLink>
+    <p>|</p>
+    <NuxtLink to="/about">go to Bus Data</NuxtLink>
+    <p>|</p>
+    <NuxtLink to="/course">go to Course</NuxtLink>
+    <br />
     <!-- <div>index {{ store.count }}</div> -->
     <!-- <button @click="store.addCount" type="button">add</button>
     <Home></Home>
@@ -21,12 +28,6 @@ const selectedDate = ref(new Date());
     <h2 v-timeformat="1690873799862"></h2>
     <VDatePicker v-model="selectedDate" />
     <br /> -->
-    <NuxtLink to="/user">go to user</NuxtLink>
-    <p>|</p>
-    <NuxtLink to="/about">go to Bus Data</NuxtLink>
-    <p>|</p>
-    <NuxtLink to="/vote">go to vote</NuxtLink>
-    <br />
   </div>
 </template>
 

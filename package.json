@@ -12,11 +12,9 @@
     "vue": "latest"
   },
   "devDependencies": {
-    "@element-plus/nuxt": "^1.0.5",
     "@nuxt/devtools": "latest",
     "@nuxtjs/google-fonts": "^3.0.2",
     "@types/node": "^18.17.0",
-    "element-plus": "^2.3.9",
     "nuxt": "^3.6.5",
     "sass": "^1.64.2",
     "sass-loader": "^13.3.2"
@@ -24,7 +22,6 @@
   "dependencies": {
     "@pinia/nuxt": "^0.4.11",
     "@popperjs/core": "^2.11.8",
-    "dayjs": "^1.11.9",
     "pinia": "^2.1.6",
     "v-calendar": "^3.0.3"
   }
