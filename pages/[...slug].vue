@@ -8,8 +8,8 @@
 
 <script setup lang="ts">
 const route = useRoute();
-// const event = useRequestEvent();
-// setResponseStatus(event, 404);
+const event = useRequestEvent();
+setResponseStatus(event, 404);
 </script>
 
 <style lang="scss" scope>

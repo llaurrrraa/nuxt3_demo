@@ -11,7 +11,7 @@ export interface FetchAccidentsData {
 }
 
 export const getAccident = async ( params: any ) => {
-  return await api('frontstage/dashboard-data/accidents', {
+  return await api('frontstage/dashboard-data/accidentss', {
     method: 'post',
     body: params
   })
