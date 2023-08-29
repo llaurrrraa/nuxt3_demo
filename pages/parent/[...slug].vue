@@ -1,14 +1,15 @@
 <template>
   <div class="child1-container">
-    <h4>Hi, this is child 1</h4>
-    <h4>My path is : {{ $route.path }}</h4>
+    <h4>Page Not Found</h4>
+    <h4>{{ route.params.slug }}</h4>
     <NuxtLink to="/parent">&lt Back to parent index</NuxtLink>
   </div>
 </template>
 
 <script setup lang="ts">
-const router = useRouter();
-console.log('router =>', router);
+const route = useRoute();
+// const event = useRequestEvent();
+// setResponseStatus(event, 404);
 </script>
 
 <style lang="scss" scope>

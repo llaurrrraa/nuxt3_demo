@@ -23,6 +23,9 @@ interface CardList {
 const { data } = await useFetch<CardList[]>(
   'https://vue-lessons-api.vercel.app/courses/list'
 );
+definePageMeta({
+  name: 'pa',
+});
 // const route = useRoute();
 // console.log(route);
 </script>

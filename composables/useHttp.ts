@@ -36,7 +36,6 @@ function paramsSerializer(params?: SearchParameters) {
 
 // fetch
 export async function api<T>(url: UrlType, option: any) {
-
     const { data } = await useFetch<ResOptions<T>>(url, {
     
     // request interceptors
@@ -47,6 +46,10 @@ export async function api<T>(url: UrlType, option: any) {
       const { public: { apiUrl } } = useRuntimeConfig();
       options.baseURL = apiUrl;
     },
+    key: String(Math.random),
+    // cache: 'no-cache',
+    // initialCache: false,
+    // server: false,
     ...option,
   });
 
